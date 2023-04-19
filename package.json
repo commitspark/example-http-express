@@ -1,0 +1,22 @@
+{
+  "name": "@contentlab/example-http-express",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "@contentlab/contentlab": "^0.5.4",
+    "@contentlab/git-adapter-github": "^0.2.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.15.11",
+    "prettier": "^2.7.1",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "start": "node dist/index.js"
+  }
+}
