@@ -1,8 +1,8 @@
-import { getApiService } from '@contentlab/contentlab'
+import { getApiService } from '@commitspark/graphql-api'
 import {
   createAdapter,
   GitHubRepositoryOptions,
-} from '@contentlab/git-adapter-github'
+} from '@commitspark/git-adapter-github'
 import express, { Express, Request, Response } from 'express'
 import dotenv from 'dotenv'
 

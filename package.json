@@ -1,10 +1,10 @@
 {
-  "name": "@contentlab/example-http-express",
+  "name": "@commitspark/example-http-express",
   "private": true,
   "version": "1.0.0",
   "dependencies": {
-    "@contentlab/contentlab": "^0.6.0",
-    "@contentlab/git-adapter-github": "^0.3.0",
+    "@commitspark/git-adapter-github": "^0.4.0",
+    "@commitspark/graphql-api": "^0.7.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2"
   },
