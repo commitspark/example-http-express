@@ -60,7 +60,7 @@ const getRepositoryOptions = (): GitHubRepositoryOptions => {
   if (
     !process.env.GITHUB_REPOSITORY_OWNER ||
     !process.env.GITHUB_REPOSITORY_NAME ||
-    !process.env.GITHUB_PERSONAL_ACCESS_TOKEN
+    !process.env.GITHUB_ACCESS_TOKEN
   ) {
     throw new Error('Missing environment variables')
   }
@@ -68,6 +68,6 @@ const getRepositoryOptions = (): GitHubRepositoryOptions => {
   return {
     repositoryOwner: process.env.GITHUB_REPOSITORY_OWNER,
     repositoryName: process.env.GITHUB_REPOSITORY_NAME,
-    personalAccessToken: process.env.GITHUB_PERSONAL_ACCESS_TOKEN,
+    accessToken: process.env.GITHUB_ACCESS_TOKEN,
   }
 }
