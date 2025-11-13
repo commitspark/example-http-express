@@ -27,7 +27,7 @@ app.post(
       errors: response.errors,
     }
     res.set({
-      'content-type': 'application/graphql+json',
+      'content-type': 'application/graphql-response+json',
       'X-Ref': response.ref,
     })
     res.status(200)
@@ -43,7 +43,7 @@ app.get('/:ref/schema', async (req: Request, res: Response): Promise<void> => {
   const response = await client.getSchema(ref)
 
   res.set({
-    'content-type': 'application/graphql+json',
+    'content-type': 'text/plain; charset=utf-8',
     'X-Ref': response.ref,
   })
   res.status(200)
