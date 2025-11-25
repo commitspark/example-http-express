@@ -4,7 +4,7 @@ import {
 } from '@commitspark/git-adapter-github'
 import express, { Express, Request, Response } from 'express'
 import dotenv from 'dotenv'
-import { createClient } from '@commitspark/graphql-api'
+import { createClient, Client } from '@commitspark/graphql-api'
 
 dotenv.config()
 
@@ -13,13 +13,22 @@ app.use(express.json())
 
 const port = process.env.PORT ? Number.parseInt(process.env.PORT) : 3000
 
+let clientInstance: Client | null = null
+
+const getClient = async () => {
+  if (!clientInstance) {
+    const adapter = createAdapter(getRepositoryOptions())
+    clientInstance = await createClient(adapter)
+  }
+  return clientInstance
+}
+
 app.post(
   '/:ref/graphql',
   async (req: Request, res: Response): Promise<void> => {
     const ref = req.params['ref']
 
-    const adapter = createAdapter(getRepositoryOptions())
-    const client = await createClient(adapter)
+    const client = await getClient()
     const response = await client.postGraphQL(ref, req.body)
 
     const body = {
@@ -38,8 +47,7 @@ app.post(
 app.get('/:ref/schema', async (req: Request, res: Response): Promise<void> => {
   const ref = req.params['ref']
 
-  const adapter = createAdapter(getRepositoryOptions())
-  const client = await createClient(adapter)
+  const client = await getClient()
   const response = await client.getSchema(ref)
 
   res.set({
